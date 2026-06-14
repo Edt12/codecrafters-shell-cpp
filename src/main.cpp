@@ -16,6 +16,9 @@ int main() {
       // TODO: Uncomment the code below to pass the first stage
       std::cout << "$ ";
       std::cin >> input;
+      if(input == "exit"){
+          break;
+      }
       if (true) {
         throw std::runtime_error(input + ": command not found");
       }

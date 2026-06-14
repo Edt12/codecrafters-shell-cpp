@@ -6,25 +6,24 @@
 
 int main() {
   // Flush after every std::cout / std:cerr
-  // 
+  //
   std::cout << std::unitbuf;
   std::cerr << std::unitbuf;
 
-  try{
-
+  while (true) {
+    try {
       std::string input;
       // TODO: Uncomment the code below to pass the first stage
       std::cout << "$ ";
       std::cin >> input;
-      if(true){
-          throw std::runtime_error(input + ": command not found");
+      if (true) {
+        throw std::runtime_error(input + ": command not found");
       }
-    
-     
-      
-  }catch(const std::exception &ex){
-      std::cerr <<ex.what();
-  }
+    } catch (const std::exception &ex) {
+      std::cerr << ex.what() << "\n";
+      continue;
+    }
 
-  return 0;
+    return 0;
+  }
 }

@@ -16,7 +16,6 @@ type::~type(){
      Parser parser(4);
      registerCommands(&parser);
      std::unique_ptr<Command> command = parser.Parse(this->args);
-     std::cout << "PARSED COMMAND"<< "\n";
      if(command == nullptr){
          std::cout<<"invalid_command: not found" << "\n";
      }else{

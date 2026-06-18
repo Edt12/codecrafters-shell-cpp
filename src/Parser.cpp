@@ -15,8 +15,6 @@ std::unique_ptr<Command> Parser::parseCommand(std::string input) {
   std::unique_ptr<Command> (*command)(void) = nullptr;
   while (currentCommandLength <= this->maxCommandLength) {
     if (commands.find(input.substr(0, currentCommandLength)) != commands.end()) {
-        std::cout<< "FOUND" << "\n";
-        std::cout << "Current command length = " << currentCommandLength << "\n";
         command = commands[input.substr(0, currentCommandLength)];
         break;
     }

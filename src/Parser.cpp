@@ -1,7 +1,6 @@
 #include "Parser.h"
 #include "Command.h"
 #include "hasArgs.h"
-#include <iostream>
 #include <memory>
 #include <utility>
 

@@ -16,7 +16,7 @@ int main() {
 
       std::string input;
 
-      std::cout << "\n$ ";
+      std::cout << "$ ";
       std::cout << std::unitbuf;
       std::cerr << std::unitbuf;
       

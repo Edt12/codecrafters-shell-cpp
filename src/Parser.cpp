@@ -42,7 +42,6 @@ void Parser::RegisterCommand(std::string name,
 //  THIS FUNCTION
 // All possible substrings starts at checking at character length 2
 std::unique_ptr<Command> Parser::Parse(std::string input) {
-    std::cout << input << "\n";
     std::unique_ptr<Command> outputCommand = parseCommand(input);
   
   // Checking if it has arguments and if yes pass in

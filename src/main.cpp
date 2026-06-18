@@ -1,39 +1,41 @@
-#include <exception>
+#include "Command.h"
 #include <iostream>
-#include <stdexcept>
+#include <memory>
 #include <string>
-#include <system_error>
-
-void echo(std::string input){
-    std::cout << input <<"\n";
-}
+#include "Parser.h"
+#include "Register.h"
 int main() {
   // Flush after every std::cout / std:cerr
   //
   std::cout << std::unitbuf;
   std::cerr << std::unitbuf;
 
+  std::unique_ptr<Parser> parser = std::make_unique<Parser>(4);
+  registerCommands(parser.get());
   while (true) {
-    try {
       std::string input;
-      // TODO: Uncomment the code below to pass the first stage
-      std::cout << "$ ";
+
+      std::cout << "\n$ ";
       std::getline(std::cin,input);
       if(input == "exit"){
           break;
       }
-      if(input.substr(0,4) == "echo"){
-          echo(input.substr(5));
-      }else{
-          throw std::runtime_error(input + ": command not found");
+
+      std::unique_ptr<Command> command = parser->Parse(input);
+      //Case where no command is found by the parser
+      if(command == nullptr){
+          std::cout <<"invalid_command: not found" << "\n";
+
+      } else{
+          ECommandStatus status = command->execute();
+          if(status == STATUS_EXIT){
+              break;
+          }
+
       }
-      
-      
-    } catch (const std::exception &ex) {
-      std::cerr << ex.what() << "\n";
-      continue;
-    }
+
+
 
   }
-  return 0;
+ return 0;
 }

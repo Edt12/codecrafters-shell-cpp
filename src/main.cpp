@@ -13,9 +13,13 @@ int main() {
   std::unique_ptr<Parser> parser = std::make_unique<Parser>(4);
   registerCommands(parser.get());
   while (true) {
+
       std::string input;
 
       std::cout << "\n$ ";
+      std::cout << std::unitbuf;
+      std::cerr << std::unitbuf;
+      
       std::getline(std::cin,input);
       if(input == "exit"){
           break;
@@ -25,9 +29,13 @@ int main() {
       //Case where no command is found by the parser
       if(command == nullptr){
           std::cout <<"invalid_command: not found" << "\n";
+          std::cout << std::unitbuf;
+          std::cerr << std::unitbuf;
 
       } else{
           ECommandStatus status = command->execute();
+          std::cout << std::unitbuf;
+          std::cerr << std::unitbuf;
           if(status == STATUS_EXIT){
               break;
           }

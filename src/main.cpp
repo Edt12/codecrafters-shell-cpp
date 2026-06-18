@@ -5,11 +5,6 @@
 #include "Parser.h"
 #include "Register.h"
 int main() {
-  // Flush after every std::cout / std:cerr
-  //
-  std::cout << std::unitbuf;
-  std::cerr << std::unitbuf;
-
   std::unique_ptr<Parser> parser = std::make_unique<Parser>(4);
   registerCommands(parser.get());
   while (true) {

@@ -23,7 +23,7 @@ int main() {
       std::unique_ptr<Command> command = parser->Parse(input);
       //Case where no command is found by the parser
       if(command == nullptr){
-          std::cout <<"invalid_command: not found" << "\n";
+          std::cout << input <<": not found" << "\n";
           std::cout << std::unitbuf;
           std::cerr << std::unitbuf;
 

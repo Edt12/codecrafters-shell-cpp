@@ -1,0 +1,19 @@
+#pragma once
+#include "BuiltIn.h"
+#include "Command.h"
+#include "hasArgs.h"
+
+
+class {{name}} : public BuiltIn ,public hasArgs{
+
+    public:
+    {{name}}();
+    
+    virtual ~{{name}}();
+
+   //Actual effect of the command  
+    ECommandStatus execute() override;
+
+    void setArgs(std::string args) override;
+    
+};
